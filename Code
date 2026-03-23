@@ -148,32 +148,7 @@ namespace NetworkProgramming.Network
 
             while (retry < 5)
             {
-                try
-                {
-                    Console.WriteLine($"[Reconnect] Attempt {retry + 1}");
-
-                    await Connect(_ip, _port);
-
-                    Console.WriteLine("[Reconnect] Success");
-                    return;
-                }
-                catch
-                {
-                    retry++;
-                    await Task.Delay(2000);
-                }
-            }
-
-            Console.WriteLine("[Reconnect] Failed");
-        }
-
-        // MANUAL DISCONNECT
-        public void Disconnect()
-        {
-            try
-            {
-                cts?.Cancel();
-                stream?.Close();
+                
                 client?.Close();
             }
             catch { }
